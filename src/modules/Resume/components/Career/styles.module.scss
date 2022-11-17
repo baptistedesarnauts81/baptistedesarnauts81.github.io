@@ -1,0 +1,21 @@
+.mapContainer {
+  display: flex;
+  margin-top: 30px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.mapContainerShow {
+  opacity: 1;
+}
+
+.sliderContainer {
+  display: flex;
+  width: 80%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

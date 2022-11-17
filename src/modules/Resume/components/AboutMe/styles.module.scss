@@ -1,0 +1,29 @@
+.container {
+  margin: 0px auto;
+  background-color: rgba(70, 56, 56, 0.404);
+  display: flex;
+  align-items: center;
+  width: 60%;
+  height: 300px;
+
+  .profilePicture {
+    border-radius: 50%;
+  }
+
+  .bioContainer {
+    margin-left: 30px;
+  }
+
+  .locationIcon {
+    display: flex;
+    align-items: center;
+    .description {
+      margin-left: 5px;
+    }
+  }
+  .bdIcon {
+    .description {
+      margin-left: 5px;
+    }
+  }
+}
