@@ -1,0 +1,31 @@
+.timelineContent {
+  text-align: left !important;
+  margin-bottom: 20px !important;
+}
+
+.location {
+  .icon {
+    margin-right: 5px;
+  }
+  display: flex;
+  align-items: center;
+}
+
+.timelineContainer {
+  margin: auto;
+  width: 70%;
+  height: 80vh;
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(3px);
+  transform: translateY(100px);
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}

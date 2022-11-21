@@ -1,0 +1,57 @@
+.location {
+  .icon {
+    margin-right: 5px;
+  }
+  display: flex;
+  align-items: center;
+}
+
+.duration {
+  .icon {
+    margin-right: 5px;
+  }
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin: 0px 5px;
+  img {
+    width: 20px;
+    height: auto;
+  }
+}
+
+.skills {
+  display: flex;
+}
+
+.separator {
+  flex-grow: 1;
+}
+
+.modalCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50%;
+  background-color: white;
+  box-shadow: 24;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.cardContainer {
+  max-width: 350px;
+  height: 340px;
+  margin-right: 2px;
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s;
+  box-shadow: 0 8px 40px -12px rgba(0, 0, 0, 0.3);
+  border-radius: 10px 10px 0px 0px !important;
+  &:hover {
+    box-shadow: 0 16px 70px -12.125px rgba(0, 0, 0, 0.3);
+  }
+}

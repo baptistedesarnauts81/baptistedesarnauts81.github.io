@@ -1,18 +1,48 @@
 .container {
-  margin: 0px auto;
-  background-color: rgba(70, 56, 56, 0.404);
+  height: 100vh;
   display: flex;
-  align-items: center;
-  width: 60%;
-  height: 300px;
-
-  .profilePicture {
-    border-radius: 50%;
+  justify-content: center;
+}
+.profilePicture {
+  z-index: 1;
+  position: absolute;
+  height: 100%;
+  width: auto;
+  .pp {
+    aspect-ratio: 1700/1274;
+    margin: auto;
+    height: auto;
+    height: 100%;
   }
+}
 
-  .bioContainer {
-    margin-left: 30px;
-  }
+.bioContainer1 {
+  position: relative;
+  z-index: 100;
+  padding: 10px;
+  background-color: rgba($color: #6e6b6b77, $alpha: 0.5);
+  height: fit-content;
+  max-width: 450px;
+  top: 30%;
+  right: -10%;
+}
+.bioContainer2 {
+  padding: 10px;
+  background: linear-gradient(to right, black 4px, transparent 4px) 0 0,
+    linear-gradient(to right, black 4px, transparent 4px) 0 100%,
+    linear-gradient(to left, black 4px, transparent 4px) 100% 0,
+    linear-gradient(to left, black 4px, transparent 4px) 100% 100%,
+    linear-gradient(to bottom, black 4px, transparent 4px) 0 0,
+    linear-gradient(to bottom, black 4px, transparent 4px) 100% 0,
+    linear-gradient(to top, black 4px, transparent 4px) 0 100%,
+    linear-gradient(to top, black 4px, transparent 4px) 100% 100%;
+
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+
+.icons {
+  display: flex;
 
   .locationIcon {
     display: flex;
@@ -21,9 +51,15 @@
       margin-left: 5px;
     }
   }
+
   .bdIcon {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+
     .description {
       margin-left: 5px;
+      margin-bottom: -4px;
     }
   }
 }

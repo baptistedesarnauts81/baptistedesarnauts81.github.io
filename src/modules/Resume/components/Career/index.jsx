@@ -1,62 +1,48 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
+import CarreerCard from "../../../../shared/components/CarreerCard";
+import { experiences } from "../../../../shared/constants/career";
 import styles from "./styles.module.scss";
-
-import Map from "../../../../shared/components/Map";
-import {
-  dateReference,
-  experiences,
-  possibleCountries,
-} from "../../../../shared/constants/career";
-import moment from "moment";
-import { Slider } from "@mui/material";
+import globalStyles from "../../../../shared/styles/global.module.scss";
 import classNames from "classnames";
+import useIntersectObserver from "../../../../shared/hooks/useIntersectObserver";
+import { Typography } from "@mui/material";
 
 export default function Career() {
-  const [month, setMonth] = useState(0);
-  const isPristine = useRef(true);
+  const careerCardRef = useRef();
 
-  useEffect(() => {
-    if (month > 0 && isPristine?.current) {
-      isPristine.current = false;
-    }
-  }, [month]);
-
-  const getDate = (val) => {
-    return moment(dateReference).add(val, "months").format("YYYY-MM");
-  };
+  const show = useIntersectObserver({ ref: careerCardRef, reset: true });
 
   return (
-    <div className={styles.container}>
-      <div className={styles.sliderContainer}>
-        <Slider
-          valueLabelDisplay='auto'
-          step={1}
-          max={moment().diff(dateReference, "months")}
-          value={month}
-          valueLabelFormat={getDate}
-          onChange={(e) => setMonth(e.target.value)}
-          marks={experiences.map((exp) => {
-            return {
-              value: exp.ts_beg.diff(dateReference, "months"),
-              label: exp.title,
-            };
-          })}
-        />
+    <section className={styles.fullHeight}>
+      <div className={styles.title}>
+        {/* <Typography variant="h4">EXPERIENCES</Typography> */}
       </div>
-      <div
-        className={classNames(styles.mapContainer, {
-          [styles.mapContainerShow]: !isPristine?.current,
+      <div ref={careerCardRef} className={styles.container}>
+        {experiences.map((exp, index) => {
+          if (exp.type === "job") {
+            return (
+              <div
+                className={classNames(styles.card, globalStyles.hidden, {
+                  [globalStyles.show]: show,
+                })}
+                style={{ transitionDelay: `${index * 100}ms` }}
+                key={index}
+              >
+                <CarreerCard
+                  role={exp.title}
+                  location={exp.city.title}
+                  company={exp.company}
+                  stack={exp.stack}
+                  dateBegin={exp.ts_beg}
+                  dateEnd={exp.ts_end}
+                  details={exp.details}
+                  image={exp.city.imgUrl}
+                />
+              </div>
+            );
+          }
         })}
-      >
-        <Map
-          country={possibleCountries.canada}
-          selectedDate={moment(dateReference).add(month, "months")}
-        />
-        <Map
-          country={possibleCountries.france}
-          selectedDate={moment(dateReference).add(month, "months")}
-        />
       </div>
-    </div>
+    </section>
   );
 }
